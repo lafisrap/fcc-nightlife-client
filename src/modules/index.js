@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import counter from './counter';
-import food from './food';
+import user from './user';
+import bars from './bars';
 
 export default combineReducers({
   routing: routerReducer,
-  counter,
-  food
+  user,
+  bars
 });

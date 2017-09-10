@@ -1,0 +1,45 @@
+.Bars_Bar {
+  width: 100%;
+}
+
+.Bars_Bar_Panel {
+  height: 100%;
+}
+
+.Bars_Bar_MediaBody {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.Bars_Bar_Heading {
+  font-size: 4.5vw;
+}
+
+@media (min-width: 768px) {
+  .Bars_Bar {
+    width: 50%;
+  }
+
+  .Bars_Bar_Heading {
+    font-size: 3.2vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .Bars_Bar {
+    width: 33.33333333333333%;
+  }
+
+  .Bars_Bar_Heading {
+    font-size: 2.5vw;
+  }
+}
+
+@media (min-width: 1280px) {
+  .Bars_Bar {
+    width: 25%;
+  }
+
+  .Bars_Bar_Heading {
+    font-size: 1.5vw;
+  }
+}

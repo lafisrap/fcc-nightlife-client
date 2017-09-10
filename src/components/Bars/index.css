@@ -1,0 +1,4 @@
+.Bars_BarList {
+  display: flex;
+  flex-wrap: wrap;
+}
