@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
-import { getBars } from '../../modules/bars'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { getBars } from '../../modules/bars';
 
 import './index.css';
 
@@ -13,7 +13,7 @@ class SearchInput extends Component {
     super(props);
 
     this.state = {
-      value: "",
+      value: props.location || '',
       timeout: null
     };
   }
@@ -33,7 +33,7 @@ class SearchInput extends Component {
 
     this.setState({ value });
 
-    if( timeout ) clearTimeout( timeout );
+    if (timeout) clearTimeout(timeout);
     if (this.getValidationState() === 'success') {
       const timeout = setTimeout(() => {
         console.log(4.1, value);
@@ -56,12 +56,12 @@ class SearchInput extends Component {
           controlId="formSearchInput"
           validationState={this.getValidationState()}
         >
-          <ControlLabel></ControlLabel>
+          <ControlLabel />
           <FormControl
             type="text"
             value={this.state.value}
             placeholder="Type an address, e.g. Turiner Straße 21, 13347 Berlin"
-            onChange={(e) => this.onChange(e)}
+            onChange={e => this.onChange(e)}
             className="SearchInput_FromControl"
           />
           <FormControl.Feedback />
@@ -71,6 +71,10 @@ class SearchInput extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  location: state.bars.location
+});
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
@@ -79,4 +83,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(SearchInput);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);

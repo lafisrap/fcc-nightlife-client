@@ -8,19 +8,22 @@ const GET_BARS_LIMIT = 20;
 const initialState = {
   bars: [],
   offset: 0,
-  location: "Berlin"
+  location: JSON.parse(localStorage.getItem('barsLocation')) || 'Berlin'
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_BARS:
-      if (action.offset === GET_BARS_LIMIT) state.bars = [];
-      console.log(3, "GET_BARS:", state, action);
+      const { payload, offset, location } = action;
+
+      if (offset === GET_BARS_LIMIT) state.bars = [];
+
+      localStorage.setItem('barsLocation', JSON.stringify(location));
       return {
         ...state,
-        bars: state.bars.concat(action.payload),
-        offset: action.offset,
-        location: action.location
+        bars: state.bars.concat(payload),
+        offset,
+        location
       };
 
     case BOOK_BAR:
